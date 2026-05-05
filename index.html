@@ -3,166 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Profesional - Francisco Castellanos</title>
+    <title>Francisco Castellanos | Productor Audiovisual</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Urbanist:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --neon-green: #00ff88;
+            --dark-bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #020617; color: #f8fafc; font-family: 'Urbanist', sans-serif; overflow-x: hidden; }
+        body { 
+            background-color: var(--dark-bg); 
+            color: #ffffff; 
+            font-family: 'Urbanist', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* FONDO DINÁMICO */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 80%);
+            z-index: -1;
+        }
 
         .slide {
             min-height: 100vh;
-            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             position: relative;
-            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
         }
 
-        .glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-            z-index: 0;
-            pointer-events: none;
+        .container { max-width: 1000px; width: 100%; z-index: 2; }
+
+        /* TIPOGRAFÍA IMPACTANTE */
+        h1 { 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: clamp(2rem, 8vw, 4.5rem); 
+            line-height: 0.9; 
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
         }
 
-        .container { max-width: 1100px; width: 100%; z-index: 1; }
+        .slide-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: var(--neon-green);
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
 
-        h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 20px; text-align: center; }
-        .slide-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #10b981; margin-bottom: 30px; border-left: 6px solid #10b981; padding-left: 20px; }
+        p { font-size: 1.3rem; color: #b0b0b0; margin-bottom: 30px; font-weight: 300; line-height: 1.4; }
 
-        p { font-size: 1.2rem; color: #94a3b8; margin-bottom: 25px; }
-        .accent { color: #10b981; }
-
+        /* BOTÓN NEÓN */
         .btn-link {
-            display: inline-flex; align-items: center; gap: 10px;
-            background-color: #10b981; color: #020617;
-            padding: 18px 35px; border-radius: 50px;
-            text-decoration: none; font-weight: 700; font-size: 1.1rem;
-            transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 15px;
+            background: transparent; color: var(--neon-green);
+            padding: 20px 40px; border-radius: 5px;
+            text-decoration: none; font-weight: 800; font-size: 1rem;
+            border: 2px solid var(--neon-green);
+            text-transform: uppercase; letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .btn-link:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); background-color: #34d399; }
+        .btn-link:hover { 
+            background: var(--neon-green); 
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--neon-green);
+            transform: scale(1.05);
+        }
 
-        .two-column { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-        
-        .highlight-number { font-size: clamp(5rem, 15vw, 10rem); font-weight: 700; color: #10b981; line-height: 1; font-family: 'Poppins', sans-serif; }
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 50px;
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+        }
 
-        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
-        .tile { background: #0f172a; padding: 40px; border-radius: 24px; text-align: center; border: 1px solid rgba(16, 185, 129, 0.1); transition: 0.3s; }
-        .tile:hover { border-color: #10b981; background: #1e293b; }
-        .tile i { font-size: 40px; color: #10b981; margin-bottom: 20px; }
+        .highlight { color: var(--neon-green); font-weight: 800; }
 
-        @media (min-width: 768px) {
-            .two-column { grid-template-columns: 1fr 1fr; }
+        /* GRID DE SKILLS */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 50px;
+        }
+        .skill-box {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .skill-box:hover { border-color: var(--neon-green); background: rgba(0, 255, 136, 0.02); }
+        .skill-box i { font-size: 2rem; color: var(--neon-green); margin-bottom: 15px; }
+
+        footer {
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .card { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
-<section class="slide">
-    <div class="glow" style="top: -10%; right: -10%;"></div>
-    <div class="container" style="text-align: center;">
-        <p style="letter-spacing: 5px; font-weight: 700; color: #10b981;">PORTAFOLIO PROFESIONAL</p>
-        <h1>Marketing, Multimedia <br>& Producción</h1>
-        <div style="height: 4px; width: 100px; background: #10b981; margin: 30px auto;"></div>
-        <p style="max-width: 800px; margin: 0 auto; font-size: 1.5rem;">Especialista en creación de contenido integral: Fotografía, edición de imagen, locución y producción audiovisual.</p>
-    </div>
-</section>
+    <div class="bg-glow"></div>
 
-<section class="slide">
-    <div class="container">
-        <h2 class="slide-title">Producción 360°: Música</h2>
-        <div class="two-column">
-            <div>
-                <h3>Campaña de Alto Impacto</h3>
-                <p>Responsable de la pieza promocional: grabación, redacción del copy y locución profesional.</p>
-                <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Ver Reel & Audio</a>
-            </div>
-            <div style="text-align: center;">
-                <i class="fas fa-compact-disc" style="font-size: 15rem; color: rgba(16, 185, 129, 0.1);"></i>
+    <section class="slide">
+        <div class="container" style="text-align: center;">
+            <p style="letter-spacing: 8px; color: var(--neon-green); margin-bottom: 10px;">SHOWREEL 2024</p>
+            <h1>Creative<br><span style="color: transparent; -webkit-text-stroke: 1px #fff;">Producer</span></h1>
+            <p style="max-width: 700px; margin: 30px auto;">Francisco Castellanos: Soluciones audiovisuales de alto impacto para marcas que buscan destacar.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="container">
+            <div class="card">
+                <h2 class="slide-title">01. Producción 360°</h2>
+                <h3>Campaña Musical</h3>
+                <p>Responsable de la pieza promocional: <span class="highlight">grabación, redacción del copy y locución profesional</span>.</p>
+                <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-link">Reproducir Reel <i class="fas fa-play"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="slide">
-    <div class="container">
-        <h2 class="slide-title">Diseño & Hosting</h2>
-        <div class="two-column">
-            <div style="text-align: center; order: 2;">
-                 <i class="fas fa-microphone-alt" style="font-size: 15rem; color: rgba(16, 185, 129, 0.1);"></i>
-            </div>
-            <div style="order: 1;">
-                <h3>Comunicación Visual</h3>
-                <p>Creación de flyer promocional bajo conceptos de jerarquía visual. Proyecto complementado con animación y conducción presencial.</p>
-                <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Ver Proyecto</a>
+    <section class="slide">
+        <div class="container">
+            <div class="card">
+                <h2 class="slide-title">02. Identidad Visual</h2>
+                <h3>Evento & Hosting</h3>
+                <p>Diseño de flyer estratégico y conducción de evento presencial. El equilibrio perfecto entre imagen y presencia.</p>
+                <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-link">Ver Diseño <i class="fas fa-eye"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="slide">
-    <div class="container">
-        <h2 class="slide-title">Producción en Medios</h2>
-        <div class="two-column">
-            <div>
-                <h3>Especial de Fin de Año</h3>
-                <p>Lideré durante 3 años la Producción General. Integración de flyers, cuñas de audio y videos para Superhit 96.1 FM y Ven Televisión.</p>
-                <a href="https://www.instagram.com/p/CYKXS97L-vn/" target="_blank" class="btn-link"><i class="fas fa-tv"></i> Ver Producción TV/Radio</a>
-            </div>
-            <div style="text-align: center;">
-                 <i class="fas fa-broadcast-tower" style="font-size: 15rem; color: rgba(16, 185, 129, 0.1);"></i>
+    <section class="slide">
+        <div class="container">
+            <div class="card">
+                <h2 class="slide-title">03. Broadcasting</h2>
+                <h3>Especial Fin de Año</h3>
+                <p>Producción general multiplataforma para <span class="highlight">Radio y TV</span> (Superhit 96.1 FM y Ven Televisión).</p>
+                <a href="https://www.instagram.com/p/CYKXS97L-vn/" target="_blank" class="btn-link">Ver Producción <i class="fas fa-broadcast-tower"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="slide">
-    <div class="container">
-        <h2 class="slide-title">Eficiencia & Respuesta</h2>
-        <div class="two-column">
-            <div style="text-align: center;">
-                <div class="highlight-number">30</div>
-                <p style="font-weight: 700; color: #10b981; font-size: 1.5rem;">MINUTOS DE PRODUCCIÓN</p>
-            </div>
-            <div>
-                <h3>Agilidad Técnica Superior</h3>
-                <p>Edición de video y montaje de audio final entregado en tiempo récord de media hora para marketing de tiempo real.</p>
-                <a href="https://www.instagram.com/reels/C38JERkx_e1/" target="_blank" class="btn-link"><i class="fas fa-bolt"></i> Ver Video Express</a>
+    <section class="slide">
+        <div class="container">
+            <div class="card" style="border-left: 4px solid var(--neon-green);">
+                <h2 class="slide-title">04. Speed Edit</h2>
+                <h3>Respuesta Inmediata</h3>
+                <p>Edición y montaje profesional finalizado en <span class="highlight">30 minutos</span>. Agilidad técnica sin comprometer la calidad.</p>
+                <a href="https://www.instagram.com/reel/C38JERkx_e1/?igsh=bXB4MDV2a2lqanZo" target="_blank" class="btn-link">Ver Video Express <i class="fas fa-bolt"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="slide">
-    <div class="container">
-        <h2 class="slide-title">Habilidades Técnicas</h2>
-        <div class="tile-grid">
-            <div class="tile"><i class="fas fa-camera"></i><h3>Fotografía</h3><p>Captura comercial y artística.</p></div>
-            <div class="tile"><i class="fas fa-magic"></i><h3>Edición Imagen</h3><p>Retoque digital avanzado.</p></div>
-            <div class="tile"><i class="fas fa-video"></i><h3>Producción Video</h3><p>Montaje para Reels y TV.</p></div>
-            <div class="tile"><i class="fas fa-microphone-alt"></i><h3>Locución</h3><p>Voz profesional para marcas.</p></div>
+    <section class="slide">
+        <div class="container">
+            <h2 class="slide-title" style="text-align: center;">Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-box"><i class="fas fa-camera"></i><h4>Photo</h4></div>
+                <div class="skill-box"><i class="fas fa-video"></i><h4>Video</h4></div>
+                <div class="skill-box"><i class="fas fa-microphone"></i><h4>Voice</h4></div>
+                <div class="skill-box"><i class="fas fa-magic"></i><h4>Design</h4></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="slide" style="background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8));">
-    <div class="container" style="text-align: center;">
-        <h2 style="font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 30px;">Contenido con <span class="accent">Propósito</span></h2>
-        <div style="margin-top: 50px; padding: 40px; border: 1px solid #10b981; border-radius: 30px; display: inline-block;">
-            <p style="color: #fff; margin-bottom: 10px; font-size: 1.5rem;">Listo para aportar valor a su equipo</p>
-            <h3 style="font-size: 2rem; color: #10b981; font-family: 'Poppins';">Francisco Castellanos</h3>
-            <p style="color: #94a3b8; font-weight: 600;">Productor Audiovisual</p>
+    <footer>
+        <div class="container">
+            <h2 style="font-family: 'Syncopate'; margin-bottom: 20px;">Francisco Castellanos</h2>
+            <p class="highlight" style="letter-spacing: 5px;">PRODUCTOR AUDIOVISUAL</p>
+            <p style="font-size: 0.9rem; margin-top: 40px; opacity: 0.5;">&copy; 2024 Todos los derechos reservados.</p>
         </div>
-    </div>
-</section>
+    </footer>
 
 </body>
 </html>
