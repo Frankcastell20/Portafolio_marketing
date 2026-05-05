@@ -3,195 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francisco Castellanos | Productor Audiovisual</title>
+    <title>Francisco Castellanos | Portafolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Urbanist:wght@300;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;600;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --neon-green: #00ff88;
-            --dark-bg: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
+            --accent: #10b981;
+            --bg: #020617;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
-            background-color: var(--dark-bg); 
+            background: var(--bg);
             color: #ffffff; 
-            font-family: 'Urbanist', sans-serif; 
-            overflow-x: hidden;
-        }
-
-        /* FONDO DINÁMICO */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 80%);
-            z-index: -1;
-        }
-
-        .slide {
+            font-family: 'Urbanist', sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 80px 20px;
-            position: relative;
+            /* FONDO CREATIVO ANIMADO */
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
 
-        .container { max-width: 1000px; width: 100%; z-index: 2; }
-
-        /* TIPOGRAFÍA IMPACTANTE */
-        h1 { 
-            font-family: 'Syncopate', sans-serif; 
-            font-size: clamp(2rem, 8vw, 4.5rem); 
-            line-height: 0.9; 
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .slide-title {
-            font-family: 'Syncopate', sans-serif;
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            color: var(--neon-green);
-            margin-bottom: 40px;
-            letter-spacing: 4px;
-        }
-
-        p { font-size: 1.3rem; color: #b0b0b0; margin-bottom: 30px; font-weight: 300; line-height: 1.4; }
-
-        /* BOTÓN NEÓN */
-        .btn-link {
-            display: inline-flex; align-items: center; gap: 15px;
-            background: transparent; color: var(--neon-green);
-            padding: 20px 40px; border-radius: 5px;
-            text-decoration: none; font-weight: 800; font-size: 1rem;
-            border: 2px solid var(--neon-green);
-            text-transform: uppercase; letter-spacing: 2px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .btn-link:hover { 
-            background: var(--neon-green); 
-            color: var(--dark-bg);
-            box-shadow: 0 0 30px var(--neon-green);
-            transform: scale(1.05);
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 50px;
-            border-radius: 2px;
-            backdrop-filter: blur(10px);
-        }
-
-        .highlight { color: var(--neon-green); font-weight: 800; }
-
-        /* GRID DE SKILLS */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 50px;
-        }
-        .skill-box {
-            border: 1px solid rgba(255,255,255,0.1);
+        .main-card {
+            max-width: 500px;
+            width: 95%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 32px;
             padding: 30px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .skill-box:hover { border-color: var(--neon-green); background: rgba(0, 255, 136, 0.02); }
-        .skill-box i { font-size: 2rem; color: var(--neon-green); margin-bottom: 15px; }
-
-        footer {
-            padding: 100px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            margin: 20px 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        @media (max-width: 768px) {
-            .card { padding: 30px; }
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; letter-spacing: -0.5px; }
+        header p { color: var(--accent); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .project-list { display: flex; flex-direction: column; gap: 12px; }
+
+        .btn-project {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
         }
+
+        .btn-project:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .info h3 { font-size: 1rem; margin-bottom: 2px; font-family: 'Poppins'; }
+        .info p { font-size: 0.8rem; color: #94a3b8; line-height: 1.2; }
+        
+        .icon-play { color: var(--accent); font-size: 1.2rem; }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .skill i { color: var(--accent); margin-bottom: 5px; font-size: 1.2rem; }
+        .skill h4 { font-size: 0.75rem; text-transform: uppercase; margin-bottom: 2px; }
+        .skill p { font-size: 0.7rem; color: #94a3b8; }
+
+        footer { text-align: center; margin-top: 30px; }
+        footer h2 { font-size: 1.2rem; font-family: 'Poppins'; margin-bottom: 2px; }
+        footer p { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <div class="main-card">
+        <header>
+            <p>Portafolio Profesional</p>
+            <h1>Francisco Castellanos</h1>
+            <p style="color: #94a3b8; font-size: 0.75rem; margin-top: 5px;">Productor Audiovisual</p>
+        </header>
 
-    <section class="slide">
-        <div class="container" style="text-align: center;">
-            <p style="letter-spacing: 8px; color: var(--neon-green); margin-bottom: 10px;">SHOWREEL 2024</p>
-            <h1>Creative<br><span style="color: transparent; -webkit-text-stroke: 1px #fff;">Producer</span></h1>
-            <p style="max-width: 700px; margin: 30px auto;">Francisco Castellanos: Soluciones audiovisuales de alto impacto para marcas que buscan destacar.</p>
+        <div class="project-list">
+            <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-project">
+                <div class="info">
+                    <h3>Producción 360°</h3>
+                    <p>Grabación, redacción de copy y locución profesional.</p>
+                </div>
+                <i class="fas fa-play-circle icon-play"></i>
+            </a>
+
+            <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-project">
+                <div class="info">
+                    <h3>Identidad Visual</h3>
+                    <p>Diseño estratégico y conducción de eventos.</p>
+                </div>
+                <i class="fas fa-eye icon-play"></i>
+            </a>
+
+            <a href="https://www.instagram.com/p/CYKXS97L-vn/" target="_blank" class="btn-project">
+                <div class="info">
+                    <h3>Broadcasting</h3>
+                    <p>Producción multiplataforma para Radio y TV.</p>
+                </div>
+                <i class="fas fa-broadcast-tower icon-play"></i>
+            </a>
+
+            <a href="https://www.instagram.com/reel/C38JERkx_e1/?igsh=bXB4MDV2a2lqanZo" target="_blank" class="btn-project">
+                <div class="info">
+                    <h3>Speed Edit (30 MIN)</h3>
+                    <p>Edición y montaje profesional en tiempo récord.</p>
+                </div>
+                <i class="fas fa-bolt icon-play"></i>
+            </a>
         </div>
-    </section>
 
-    <section class="slide">
-        <div class="container">
-            <div class="card">
-                <h2 class="slide-title">01. Producción 360°</h2>
-                <h3>Campaña Musical</h3>
-                <p>Responsable de la pieza promocional: <span class="highlight">grabación, redacción del copy y locución profesional</span>.</p>
-                <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-link">Reproducir Reel <i class="fas fa-play"></i></a>
+        <div class="expertise-grid">
+            <div class="skill">
+                <i class="fas fa-camera"></i>
+                <h4>Fotografía</h4>
+                <p>Comercial y artística</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-video"></i>
+                <h4>Video</h4>
+                <p>Montaje Reels y TV</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-microphone"></i>
+                <h4>Locución</h4>
+                <p>Voz para marcas</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-magic"></i>
+                <h4>Diseño</h4>
+                <p>Retoque avanzado</p>
             </div>
         </div>
-    </section>
 
-    <section class="slide">
-        <div class="container">
-            <div class="card">
-                <h2 class="slide-title">02. Identidad Visual</h2>
-                <h3>Evento & Hosting</h3>
-                <p>Diseño de flyer estratégico y conducción de evento presencial. El equilibrio perfecto entre imagen y presencia.</p>
-                <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-link">Ver Diseño <i class="fas fa-eye"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div class="container">
-            <div class="card">
-                <h2 class="slide-title">03. Broadcasting</h2>
-                <h3>Especial Fin de Año</h3>
-                <p>Producción general multiplataforma para <span class="highlight">Radio y TV</span> (Superhit 96.1 FM y Ven Televisión).</p>
-                <a href="https://www.instagram.com/p/CYKXS97L-vn/" target="_blank" class="btn-link">Ver Producción <i class="fas fa-broadcast-tower"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div class="container">
-            <div class="card" style="border-left: 4px solid var(--neon-green);">
-                <h2 class="slide-title">04. Speed Edit</h2>
-                <h3>Respuesta Inmediata</h3>
-                <p>Edición y montaje profesional finalizado en <span class="highlight">30 minutos</span>. Agilidad técnica sin comprometer la calidad.</p>
-                <a href="https://www.instagram.com/reel/C38JERkx_e1/?igsh=bXB4MDV2a2lqanZo" target="_blank" class="btn-link">Ver Video Express <i class="fas fa-bolt"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div class="container">
-            <h2 class="slide-title" style="text-align: center;">Expertise</h2>
-            <div class="skills-container">
-                <div class="skill-box"><i class="fas fa-camera"></i><h4>Photo</h4></div>
-                <div class="skill-box"><i class="fas fa-video"></i><h4>Video</h4></div>
-                <div class="skill-box"><i class="fas fa-microphone"></i><h4>Voice</h4></div>
-                <div class="skill-box"><i class="fas fa-magic"></i><h4>Design</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <h2 style="font-family: 'Syncopate'; margin-bottom: 20px;">Francisco Castellanos</h2>
-            <p class="highlight" style="letter-spacing: 5px;">PRODUCTOR AUDIOVISUAL</p>
-            <p style="font-size: 0.9rem; margin-top: 40px; opacity: 0.5;">&copy; 2024 Todos los derechos reservados.</p>
-        </div>
-    </footer>
+        <footer>
+            <h2>Francisco Castellanos</h2>
+            <p>Productor Audiovisual</p>
+        </footer>
+    </div>
 
 </body>
 </html>
