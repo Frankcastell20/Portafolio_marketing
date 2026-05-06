@@ -3,92 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Profesional | Francisco - Marketing & Producción</title>
+    <title>Portafolio Profesional | Francisco Castellanos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #0f172a; color: #f8fafc; font-family: 'Urbanist', sans-serif; line-height: 1.6; }
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Urbanist', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        
+        /* 1. ANIMACIONES CINEMATOGRÁFICAS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-fade { animation: fadeInUp 1.2s ease-out forwards; }
+        .delay-1 { animation-delay: 0.3s; opacity: 0; }
+        .delay-2 { animation-delay: 0.6s; opacity: 0; }
+        .delay-3 { animation-delay: 0.9s; opacity: 0; }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; padding: 60px 0; background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.1), transparent); }
-        h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; line-height: 1.1; margin-bottom: 20px; color: #fff; }
+        
+        /* 2. CABECERA DE BIENVENIDA (HERO) */
+        .welcome-hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1492691523567-6170f0295dbd?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid #10b981;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .welcome-hero h2 { color: #10b981; font-size: 1.1rem; letter-spacing: 5px; margin-bottom: 15px; text-transform: uppercase; animation: slideInRight 1s ease-out; }
+        .welcome-hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 25px; }
+        .welcome-hero p { font-size: 1.3rem; color: #94a3b8; max-width: 800px; margin: 0 auto; font-weight: 300; }
+
+        /* 3. TARJETAS DE PROYECTO */
+        .project-card { 
+            background: #1e293b; 
+            border-radius: 24px; 
+            margin-bottom: 35px; 
+            overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .project-card:hover { transform: translateY(-10px) scale(1.01); border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        
+        .project-content { padding: 35px; }
+        .project-tag { color: #10b981; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; display: block; }
+        h3 { font-size: 1.9rem; margin-bottom: 15px; color: #fff; font-family: 'Poppins', sans-serif; }
+        .project-content p { color: #cbd5e1; margin-bottom: 25px; font-size: 1.1rem; font-weight: 300; }
+        
+        .btn-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            background: #10b981; 
+            color: #0f172a; 
+            padding: 16px 32px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 1rem;
+            transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+        .btn-link:hover { background: #34d399; transform: scale(1.05); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 80px 0; }
+        .skill-item { background: rgba(30, 41, 59, 0.4); padding: 30px; border-radius: 25px; text-align: center; border: 1px solid rgba(16, 185, 129, 0.1); transition: 0.3s; }
+        .skill-item:hover { background: rgba(16, 185, 129, 0.05); border-color: #10b981; }
+        .skill-item i { font-size: 2.5rem; color: #10b981; margin-bottom: 20px; }
+
+        footer { text-align: center; padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); background: #0a0f1d; }
         .accent { color: #10b981; }
-        header p { font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin: 0 auto; }
-        .project-card { background: #1e293b; border-radius: 20px; margin-bottom: 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; transition: transform 0.3s ease; }
-        .project-card:hover { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.3); }
-        .project-content { padding: 30px; }
-        .project-tag { color: #10b981; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-        h3 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
-        .project-content p { color: #94a3b8; margin-bottom: 20px; }
-        .btn-link { display: inline-flex; align-items: center; gap: 10px; background: #10b981; color: #0f172a; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .btn-link:hover { background: #34d399; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 60px; }
-        .skill-item { background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(16, 185, 129, 0.1); }
-        .skill-item i { font-size: 2rem; color: #10b981; margin-bottom: 15px; }
-        footer { text-align: center; padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        @media (min-width: 768px) { h1 { font-size: 4rem; } .project-card { flex-direction: row; } .project-content { flex: 1; } }
+
+        @media (min-width: 768px) { .project-card { flex-direction: row; } .project-content { flex: 1; } }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <p class="accent" style="margin-bottom: 10px; font-weight: 700;">PRODUCER & MARKETING ASST</p>
-            <h1>Creatividad <span class="accent">Multimedia</span> Profesional</h1>
-            <p>Especialista en producción audiovisual, locución y marketing digital.</p>
+
+    <section class="welcome-hero">
+        <div class="container animate-fade">
+            <h2>Propuesta Profesional</h2>
+            <h1>Bienvenido Equipo de <span class="accent">Baratodo</span></h1>
+            <p>He diseñado este portafolio exclusivamente para mostrarles cómo mi agilidad técnica y visión creativa pueden elevar el estándar visual de su marca desde el primer día.</p>
         </div>
-    </header>
+    </section>
 
     <div class="container">
-        <div class="project-card">
+        
+        <div class="project-card animate-fade delay-1">
             <div class="project-content">
                 <span class="project-tag">Producción 360°</span>
-                <h3>Promoción Concierto Musical</h3>
-                <p>Grabación, edición y locución profesional para circuito radial regional.</p>
-                <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Ver Reel & Audio</a>
+                <h3>Promoción Audiovisual Integral</h3>
+                <p>Responsable de la pieza promocional: grabación, redacción del copy y locución profesional para circuito radial regional.</p>
+                <a href="https://www.instagram.com/reel/Cw-Toa9rh2P/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Reproducir Reel</a>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card animate-fade delay-2">
             <div class="project-content">
                 <span class="project-tag">Diseño & Animación</span>
                 <h3>Identidad de Evento Ciudad</h3>
-                <p>Diseño de flyer promocional y animación presencial del evento.</p>
-                <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Ver Flyer</a>
+                <p>Diseño de flyer estratégico y animación presencial. Una propuesta que equilibra impacto visual y presencia de marca.</p>
+                <a href="https://www.instagram.com/p/Cn5nJYbrT7y/" target="_blank" class="btn-link"><i class="fab fa-instagram"></i> Ver Proyecto</a>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card animate-fade delay-3">
             <div class="project-content">
                 <span class="project-tag">Medios Masivos</span>
                 <h3>Especial de Fin de Año</h3>
-                <p>Producción general multiplataforma para Radio y TV (Superhit 96.1 FM y Ven FM).</p>
+                <p>Producción general multiplataforma para Radio y TV (Superhit 96.1 FM). Líder en creación de contenidos de temporada.</p>
                 <a href="https://www.instagram.com/p/CYKXS97L-vn/" target="_blank" class="btn-link"><i class="fas fa-tv"></i> Ver Producción</a>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card animate-fade delay-3" style="border-left: 4px solid #10b981;">
             <div class="project-content">
                 <span class="project-tag">Respuesta Express</span>
                 <h3>Edición Rápida (30 Minutos)</h3>
-                <p>Edición de video y montaje de audio profesional realizado en tiempo récord.</p>
-                <a href="https://www.instagram.com/reel/C38JERkx_e1/?utm_source=portfolio_update" target="_blank" class="btn-link"><i class="fas fa-bolt"></i> Ver Video Express</a>
+                <p>Demostración de agilidad técnica superior: edición y montaje profesional realizado en tiempo récord para marketing de respuesta inmediata.</p>
+                <a href="https://www.instagram.com/reel/C38JERkx_e1/?igsh=bXB4MDV2a2lqanZo" target="_blank" class="btn-link"><i class="fas fa-bolt"></i> Ver Video Express</a>
             </div>
         </div>
 
-        <div class="skills-grid">
+        <div class="skills-grid animate-fade delay-3">
             <div class="skill-item"><i class="fas fa-camera"></i><h4>Fotografía</h4></div>
-            <div class="skill-item"><i class="fas fa-magic"></i><h4>Edición Imagen</h4></div>
-            <div class="skill-item"><i class="fas fa-video"></i><h4>Video</h4></div>
-            <div class="skill-item"><i class="fas fa-microphone-alt"></i><h4>Locución</h4></div>
+            <div class="skill-item"><i class="fas fa-magic"></i><h4>Edición de Imagen</h4></div>
+            <div class="skill-item"><i class="fas fa-video"></i><h4>Producción de Video</h4></div>
+            <div class="skill-item"><i class="fas fa-microphone-alt"></i><h4>Locución Profesional</h4></div>
         </div>
     </div>
 
     <footer>
-        <div class="container">
-            <p style="font-weight: 700;" class="accent">Francisco - Productor Nacional Independiente</p>
+        <div class="container animate-fade delay-3">
+            <h3 style="margin-bottom: 10px; font-size: 1.8rem;">Francisco Castellanos</h3>
+            <p style="font-weight: 700; letter-spacing: 3px; font-size: 1rem;" class="accent">PRODUCTOR AUDIOVISUAL</p>
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.4;">&copy; 2026 - Presentación Exclusiva para Selección de Talento</p>
         </div>
     </footer>
+
 </body>
 </html>
